@@ -28,6 +28,8 @@ spec:
     value: Containerfile
   - name: path-context
     value: .
+  - name: build-args-file
+    value: config
   pipelineSpec:
     description: |
       This pipeline is ideal for building container images from a Containerfile while reducing network traffic.
@@ -532,6 +534,8 @@ spec:
         value: $(tasks.build-image-index.results.IMAGE_URL)
       - name: IMAGE_DIGEST
         value: $(tasks.build-image-index.results.IMAGE_DIGEST)
+      - name: ADDITIONAL_TAGS
+        value: [ "latest" ]
       runAfter:
       - build-image-index
       taskRef:
