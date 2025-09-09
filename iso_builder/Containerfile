@@ -1,0 +1,28 @@
+FROM --platform=linux/amd64 quay.io/centos/centos:stream9 AS builder
+
+ARG ISO_URL
+
+USER root
+
+# Copy the configuration script into the container
+COPY build-ove-image.sh /tmp/
+
+RUN chmod +x /tmp/build-ove-image.sh
+
+RUN dnf -y update; micro-dnf -y reinstall shadow-utils; \
+dnf -y install podman runc ; \
+rm -rf /var/cache /var/log/dnf* /var/log/yum.*
+
+# Use runc as containers engine
+RUN mkdir -p /etc/containers/ && \
+  echo "[engine]" >> /etc/containers/containers.conf && \
+  echo "runtime=\"runc\"" >> /etc/containers/containers.conf
+
+# Do the postprocessing step to generate the OVE ISO
+RUN dnf install -y xorriso skopeo rsync syslinux \
+ && dnf clean all
+
+RUN /tmp/build-ove-image.sh --rhcos-url ${ISO_URL} --dir / && rm /rhcos.iso && rm -rf /isomnt
+
+# Override openshift-appliance entrypoint for testing purposes
+ENTRYPOINT ["/bin/bash"]
