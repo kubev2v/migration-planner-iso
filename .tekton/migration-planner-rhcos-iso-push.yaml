@@ -30,6 +30,8 @@ spec:
     value: .
   - name: build-args-file
     value: config
+  - name: build-args
+    value: [ "ISO_CHECKSUM=7a47d0c7a9bf5edb143d52809e793af2d74731567b95d91c6225171a1c49b5ab" ]
   pipelineSpec:
     description: |
       This pipeline is ideal for building container images from a Containerfile while reducing network traffic.
