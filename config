@@ -1,4 +1,2 @@
 ISO_FILE_NAME=rhcos.iso
 ISO_URL=https://mirror.openshift.com/pub/openshift-v4/dependencies/rhcos/latest/rhcos-live-iso.x86_64.iso
-ISO_CHECKSUM=7a47d0c7a9bf5edb143d52809e793af2d74731567b95d91c6225171a1c49b5ab
-
