@@ -1,8 +1,11 @@
 FROM --platform=linux/amd64 registry.access.redhat.com/ubi9/ubi-minimal AS builder
 
+ARG IMAGE_TAG
 ARG ISO_URL
 ARG ISO_FILE_NAME
 ARG ISO_CHECKSUM
+
+RUN echo $IMAGE_TAG
 
 # Download the ISO
 RUN curl -L -o /${ISO_FILE_NAME} ${ISO_URL}
