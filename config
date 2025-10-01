@@ -1,4 +1,7 @@
 ISO_FILE_NAME=rhcos.iso
-ISO_URL=https://mirror.openshift.com/pub/openshift-v4/dependencies/rhcos/latest/rhcos-live-iso.x86_64.iso
+ISO_URL=https://mirror.openshift.com/pub/openshift-v4/dependencies/rhcos/4.19/4.19.10/rhcos-4.19.10-x86_64-live-iso.x86_64.iso
 ISO_CHECKSUM=7a47d0c7a9bf5edb143d52809e793af2d74731567b95d91c6225171a1c49b5ab
-
+AGENT_IMAGE=migration-planner-agent
+AGENT_TAG=213e597ae9b6d7cff7adddb8dc2e87f9dcc03dcc
+REGISTRY=quay.io
+ORG=redhat-user-workloads/assisted-migration-tenant
